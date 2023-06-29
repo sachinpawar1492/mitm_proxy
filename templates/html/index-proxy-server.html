@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Proxy Server</title>
+        <link rel="icon" type="image/x-icon" href="https://cdn.fing.io/images/isp/NL/logo/kpn_logo.png" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="/css/styles.css" rel="stylesheet" />
+        
+        <script src="https://cdn.jsdelivr.net/npm/dual-listbox/dist/dual-listbox.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/dual-listbox/dist/dual-listbox.css" rel="stylesheet" />
+        
+        <!-- for pinned version -->
+        <script src="https://cdn.jsdelivr.net/npm/dual-listbox@1.0.9/dist/dual-listbox.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/dual-listbox@1.0.9/dist/dual-listbox.css" rel="stylesheet" />
+    </head>
+
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+            <!-- Rounded switch -->
+            {% block block_unblock %} {% endblock %}
+            <a class="navbar-brand js-scroll-trigger" href="#page-top">
+                <span class="d-block d-lg-none">Proxy Server</span>
+                <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="../img/mitm_logo.png" alt="..." /></span>
+            </a>
+            <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button> -->
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav">
+                    {% block get_non_toxic_list %} {% endblock %}
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#"></a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#"></a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#"></a></li>
+                    <!-- <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#"></a></li>
+                        <input name="toxic_cases" onclick="this.form.submit()" type="button" value="Submit"> -->
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/proxy-server" onclick="reloadPage()">Refresh</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#"></a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#"></a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/">Main Page</a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- Page Content--> 
+        <div class="container-fluid p-0">
+            {% block get_hosts %} {% endblock %}
+        </div>       
+        
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="/js/scripts.js"></script>
+    </body>
+
+</html>

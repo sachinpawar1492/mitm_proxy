@@ -1,0 +1,7 @@
+/certificates/*
+!*.gitkeep
+.pyc
+.idea
+__pycache__
+/.settings/
+/.project

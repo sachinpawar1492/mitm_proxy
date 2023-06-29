@@ -1,0 +1,81 @@
+{% extends 'index-proxy-server.html' %}
+
+{% block get_non_toxic_list %}
+    {% for non_toxic_case in non_toxic_cases %}
+        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#{{ non_toxic_case }}">{{ non_toxic_case }}</a></li>
+    {% endfor %}
+{% endblock %}
+
+{% block block_unblock %}
+    <div class="form-check form-switch">
+        <form action="/block-unblock-delay" method="post">
+            {% if toxic_dict["block"] == "False" %}
+                {% set checked = "" %}
+            {% elif toxic_dict["block"] == "True" %}
+                {% set checked = "checked" %}
+            {% endif %}
+            <input name="block_unblock" onclick="this.form.submit()" class="h4 form-check-input form-check-input-with-text" type="checkbox" role="switch" id="flexSwitchCheckChecked" {{ checked }}>
+            <label class="h4 text-white-50 text-nowrap" for="flexSwitchCheckChecked">Block Switch</label><br>
+            
+            {% if toxic_dict["block"] == "True" %}
+                {% set delay = toxic_dict["delay_in_sec"] %}
+                <label class="h4 text-white-50 text-nowrap" for="delay">Sec Delay</label>
+                <input name="delay" onfocusout="this.form.submit()" class="h4 input-group-text" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" id="delay" value="{{ delay }}">
+            {% endif %}
+        </form>
+    </div>   
+{% endblock %}
+
+{% block get_hosts %}
+    <section class="">
+        <div class="container py-5 h-100">
+            <div class="form-check form-switch">
+                <form action="/update-toxic-dict" method="post">
+                    <div class="row d-flex justify-content-center align-items-center h-100">
+                        <div class="card rounded-3">
+                            <div class="card-body p-4">
+                                {% set toxic_cases = toxic_dict["toxic_cases"] %}
+                                {% set toxic_cases_length = toxic_cases|length %}
+                                {% set colspan = toxic_cases_length + 1 %}
+                                <table class="table-responsive table-striped table-hover fixTableHead">
+                                    <thead>
+                                        <tr class="bg-primary">
+                                            <th>
+                                                <input name="toxic_cases" onclick="this.form.submit()" type="button" value="Submit">
+                                            </th>
+                                            {% for toxic_case in toxic_cases %}
+                                                <th><img class="img-fluid small-img-profile rounded-circle mx-auto" src="../img/{{ toxic_case }}.png" alt="{{ toxic_case }}" /></th>
+                                            {% endfor %}
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for non_toxic_case in non_toxic_cases %}
+                                            <tr class="tr-sticky">
+                                                <td class="h2" colspan="{{ colspan }}">
+                                                    <section class="resume-section" id="{{ non_toxic_case }}">{{ non_toxic_case }}</section>
+                                                </td>
+                                            </tr>
+                                            {% for value in non_toxic_cases[non_toxic_case] %}
+                                                <tr>
+                                                    <td>{{ value }}</td>
+                                                    {% for toxic_case in toxic_cases %}
+                                                        {% if value in toxic_cases[toxic_case][non_toxic_case] %}
+                                                            {% set checked = "checked" %}
+                                                        {% else %}
+                                                            {% set checked = "" %}
+                                                        {% endif %}
+                                                        <td class="text-align-center"><input class="form-check-input me-3" type="checkbox" name="{{ toxic_case }}-{{ non_toxic_case }}" value="{{ value }}" aria-label="..." {{ checked }}/></td>
+                                                    {% endfor %}                                            
+                                                </tr>
+                                            {% endfor %}
+                                        {% endfor %}
+                                    </tbody>
+                                </table>  
+                            </div>
+                        </div>      
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+{% endblock %}

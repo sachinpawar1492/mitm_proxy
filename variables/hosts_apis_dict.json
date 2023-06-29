@@ -1,0 +1,13 @@
+{
+	"hosts": [
+		"youtube.com",
+		"netflix.com",
+		"google.nl",
+		"capgemini.sharepoint.com"
+	],
+	"apis": [
+		"/sites/Einstein",
+		"/search?q=Sogeti"
+	]
+}
+

@@ -1,0 +1,31 @@
+{
+    "block": "True",
+    "delay_in_sec": 0,
+    "toxic_cases": {
+        "delay": {
+            "image": "delay.png",
+            "hosts": [],
+            "apis": []
+        },
+        "block": {
+            "image": "block.png",
+            "hosts": [],
+            "apis": []
+        },
+        "block_combination": {
+            "image": "block.png",
+            "hosts": [],
+            "apis": []
+        },
+        "generic_error": {
+            "image": "generic_error.png",
+            "hosts": [],
+            "apis": []
+        },
+        "empty_response": {
+            "image": "empty.png",
+            "hosts": [],
+            "apis": []
+        }
+    }
+}

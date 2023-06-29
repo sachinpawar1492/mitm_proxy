@@ -1,0 +1,7 @@
+{
+	"resultCode": "KO",
+	"errorDescription": "ACN_3000",
+	"message": "The authentication token is not valid",
+	"resultObj": {},
+	"systemTime": ""
+}
